@@ -6,8 +6,43 @@
     <title>Rock Paper Scissors</title>
 </head>
 <body>
+    <h1>How To Play</h1>
+    <ol>
+        <li>Right click on the webpage and press "inspect element".</li>
+        <li>Click on the "Console" tab to see the result.</li>
+        <li>Keep this window open and click the button to start the game.</li>
+    </ol>
+    <button>Start</button>
+
     <script>
-        
+        const playerChoice = window.prompt("Type Rock, Paper, or Scissors."); 
+
+        function getcomputerChoice() {
+            let randomComputerChoice = Math.floor(Math.random() * 100);
+            if (randomComputerChoice <= 33) {
+                return getComputerChoice = "rock";
+            } else if (randomComputerChoice >= 34 && randomComputerChoice <= 66) {
+                return getComputerChoice = "paper";
+            } else {
+                return getComputerChoice = "scissors";
+            }
+        }
+
+        function playRound(playerSelection, computerSelection) {
+            if ((playerSelection === "rock" && computerSelection === "paper") || 
+            (playerSelection === "paper" && computerSelection === "scissors" ) || 
+            (playerSelection === "scissors" && computerSelection === "rock")) {
+               return alert("You Lose!");
+            } else if (playerSelection === computerSelection) {
+               return alert("It's a Tie!");
+            } else {
+                return alert("You Win!");
+            }
+        }
+        const playerSelection = playerChoice;
+        const computerSelection = getcomputerChoice();
+        console.log(playRound(playerSelection, computerSelection));
+        console.log(playerSelection, computerSelection);
     </script>
 </body>
 </html>
