@@ -15,8 +15,8 @@
     <button>Start</button>
 
     <script>
-        const playerChoice = window.prompt("Type Rock, Paper, or Scissors."); 
-
+        let playerChoice = window.prompt("Type Rock, Paper, or Scissors."); 
+        playerChoice = playerChoice.toLowerCase();
         function getcomputerChoice() {
             let randomComputerChoice = Math.floor(Math.random() * 100);
             if (randomComputerChoice <= 33) {
