@@ -6,17 +6,10 @@
     <title>Rock Paper Scissors</title>
 </head>
 <body>
-    <h1>How To Play</h1>
-    <ol>
-        <li>Right click on the webpage and press "inspect element".</li>
-        <li>Click on the "Console" tab to see the result.</li>
-        <li>Keep this window open and click the button to start the game.</li>
-    </ol>
-    <button>Start</button>
+    <h1>To play again refresh the page!</h1>
 
     <script>
-        let playerChoice = window.prompt("Type Rock, Paper, or Scissors."); 
-        playerChoice = playerChoice.toLowerCase();
+
         function getcomputerChoice() {
             let randomComputerChoice = Math.floor(Math.random() * 100);
             if (randomComputerChoice <= 33) {
@@ -28,21 +21,55 @@
             }
         }
 
-        function playRound(playerSelection, computerSelection) {
-            if ((playerSelection === "rock" && computerSelection === "paper") || 
-            (playerSelection === "paper" && computerSelection === "scissors" ) || 
-            (playerSelection === "scissors" && computerSelection === "rock")) {
+        function playRound(playerChoice, computerSelection) {
+            if ((playerChoice === "rock" && computerSelection === "paper") || 
+            (playerChoice === "paper" && computerSelection === "scissors" ) || 
+            (playerChoice === "scissors" && computerSelection === "rock")) {
                return alert("You Lose!");
-            } else if (playerSelection === computerSelection) {
+            } else if (playerChoice === computerSelection) {
                return alert("It's a Tie!");
-            } else {
+            } else if ((playerChoice === "rock" && computerSelection === "scissors") || 
+            (playerChoice === "paper" && computerSelection === "rock") || 
+            (playerChoice === "scissors" && computerSelection === "paper")) {
                 return alert("You Win!");
+            } else {
+                return alert("Invalid Choice");
             }
         }
-        const playerSelection = playerChoice;
-        const computerSelection = getcomputerChoice();
-        console.log(playRound(playerSelection, computerSelection));
-        console.log(playerSelection, computerSelection);
+
+        function playerChoice1() {
+            window.prompt("Type Rock, Paper, or Scissors.");
+        if (playerChoice1 === null) {
+            return
+        } else {
+           return playerChoice1.toLowerCase();
+        }
+    }
+    typeof(playerChoice1());
+        let playerChoice = playerChoice1();
+        let computerSelection = getcomputerChoice();
+        
+        function game() {
+
+            console.log(playRound(playerChoice, computerSelection));
+           
+            window.prompt("Round 2\nType Rock, Paper, or Scissors.");
+            console.log(playRound(playerChoice, getcomputerChoice()));
+           
+            window.prompt("Round 3\nType Rock, Paper, or Scissors.");
+            console.log(playRound(playerChoice, getcomputerChoice()));
+
+            window.prompt("Round 4\nType Rock, Paper, or Scissors.");
+            console.log(playRound(playerChoice, getcomputerChoice()));
+
+            window.prompt("Round 5\nType Rock, Paper, or Scissors.");
+            console.log(playRound(playerChoice, getcomputerChoice()));
+           
+        }
+
+        console.log(playerChoice, computerSelection);
+        //console.log(playRound(playerSelection, computerSelection));
+        console.log(game());
     </script>
 </body>
 </html>
