@@ -10,6 +10,21 @@
 
     <script>
 
+        function game(){
+
+            
+        
+        let playerChoice = playerPick();
+        
+        function playerPick() {
+            let playerInitial = window.prompt("Type Rock, Paper, or Scissors.");
+            if (playerInitial === null || playerInitial === undefined) {
+                return
+            } else {
+                return playerInitial.toLowerCase();
+            }
+        }
+            console.log(playerChoice);
         function getcomputerChoice() {
             let randomComputerChoice = Math.floor(Math.random() * 100);
             if (randomComputerChoice <= 33) {
@@ -32,44 +47,27 @@
             (playerChoice === "paper" && computerSelection === "rock") || 
             (playerChoice === "scissors" && computerSelection === "paper")) {
                 return alert("You Win!");
+            } else if (playerChoice === null || playerChoice === undefined) {
+                return
             } else {
-                return alert("Invalid Choice");
+                return alert("Invalid Choice!");
             }
         }
-
-        function playerChoice1() {
-            window.prompt("Type Rock, Paper, or Scissors.");
-        if (playerChoice1 === null) {
-            return
-        } else {
-           return playerChoice1.toLowerCase();
-        }
-    }
-    typeof(playerChoice1());
-        let playerChoice = playerChoice1();
+    
         let computerSelection = getcomputerChoice();
-        
-        function game() {
-
-            console.log(playRound(playerChoice, computerSelection));
-           
-            window.prompt("Round 2\nType Rock, Paper, or Scissors.");
-            console.log(playRound(playerChoice, getcomputerChoice()));
-           
-            window.prompt("Round 3\nType Rock, Paper, or Scissors.");
-            console.log(playRound(playerChoice, getcomputerChoice()));
-
-            window.prompt("Round 4\nType Rock, Paper, or Scissors.");
-            console.log(playRound(playerChoice, getcomputerChoice()));
-
-            window.prompt("Round 5\nType Rock, Paper, or Scissors.");
-            console.log(playRound(playerChoice, getcomputerChoice()));
-           
+        console.log(playRound(playerChoice, computerSelection));
+        console.log(playerChoice, computerSelection);
+    }
+        function playFiveRounds(){
+            console.log(game());
+            console.log(game());
+            console.log(game());
+            console.log(game());
+            console.log(game());
         }
 
-        console.log(playerChoice, computerSelection);
-        //console.log(playRound(playerSelection, computerSelection));
         console.log(game());
+        console.log(playFiveRounds());
     </script>
 </body>
 </html>
