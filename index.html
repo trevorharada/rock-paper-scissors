@@ -49,15 +49,15 @@
             (playerChoice === "paper" && computerChoice === "scissors" ) || 
             (playerChoice === "scissors" && computerChoice === "rock")) {
                 alert("You Lose!");
-                return playRound = "Lose";
+                return result = "Lose";
             } else if (playerChoice === computerChoice) {
                 alert("It's a Tie!");
-                return playRound = "Tie";
+                return result = "Tie";
             } else if ((playerChoice === "rock" && computerChoice === "scissors") || 
             (playerChoice === "paper" && computerChoice === "rock") || 
             (playerChoice === "scissors" && computerChoice === "paper")) {
                 alert("You Win!");
-                return playRound = "Win";
+                return result = "Win";
             //} else if (playerChoice === null || playerChoice === undefined) {
                 //return
             } else {
@@ -66,23 +66,26 @@
             }
         }
 
+        //let result = " ";
+        
         console.log(playRound(playerChoice, computerChoice));
-        console.log(playerChoice, computerChoice);
+        console.log(playerChoice, computerChoice );
     }
 
+    //let result = " ";
+
     function playFiveRounds(){
-        let playRound;
         let winCount = 0;
         let loseCount = 0;
         let tieCount = 0;
 
-        if (playRound() === "Win"){
+        /*if (game() === "Win"){
             return winCount++;
-        } else if (playRound() === "Lose") {
+        } else if (game() === "Lose") {
             return loseCount++;
         } else {
             return tieCount++;
-        }
+        }*/
 
         console.log(game());
         console.log(game());
@@ -93,7 +96,7 @@
     }
 
     console.log(playFiveRounds());
-
+    //console.log(result);
     </script>
 </body>
 </html>
