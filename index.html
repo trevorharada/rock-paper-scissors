@@ -7,11 +7,14 @@
 </head>
 <body>
     <h1>To play again refresh the page!</h1>
+    <h2>To see the your choice vs. the computers choice, right click on the page and 
+        press "inspect", then click on the console tab at the top.</h2>
+    <h2>The Computer picks rock, paper, or scissors, based off a random number between
+        0 - 100.</h2>
 
     <script>
 
     function game(){
-
         let playerChoice = playerPick();
         
         function playerPick() {
@@ -45,32 +48,52 @@
             if ((playerChoice === "rock" && computerChoice === "paper") || 
             (playerChoice === "paper" && computerChoice === "scissors" ) || 
             (playerChoice === "scissors" && computerChoice === "rock")) {
-               return alert("You Lose!");
+                alert("You Lose!");
+                return playRound = "Lose";
             } else if (playerChoice === computerChoice) {
-               return alert("It's a Tie!");
+                alert("It's a Tie!");
+                return playRound = "Tie";
             } else if ((playerChoice === "rock" && computerChoice === "scissors") || 
             (playerChoice === "paper" && computerChoice === "rock") || 
             (playerChoice === "scissors" && computerChoice === "paper")) {
-                return alert("You Win!");
+                alert("You Win!");
+                return playRound = "Win";
             //} else if (playerChoice === null || playerChoice === undefined) {
                 //return
             } else {
-                return alert("Invalid Choice!");
+                alert("Invalid Choice!");
+                return console.log(playRound(playerPick(), computerChoice));
             }
         }
 
         console.log(playRound(playerChoice, computerChoice));
         console.log(playerChoice, computerChoice);
     }
-        function playFiveRounds(){
-            console.log(game());
-            console.log(game());
-            console.log(game());
-            console.log(game());
-            console.log(game());
+
+    function playFiveRounds(){
+        let playRound;
+        let winCount = 0;
+        let loseCount = 0;
+        let tieCount = 0;
+
+        if (playRound() === "Win"){
+            return winCount++;
+        } else if (playRound() === "Lose") {
+            return loseCount++;
+        } else {
+            return tieCount++;
         }
 
+        console.log(game());
+        console.log(game());
+        console.log(game());
+        console.log(game());
+        console.log(game());
+        console.log(winCount, loseCount, tieCount);
+    }
+
     console.log(playFiveRounds());
+
     </script>
 </body>
 </html>
