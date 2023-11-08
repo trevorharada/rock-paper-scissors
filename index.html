@@ -10,21 +10,26 @@
 
     <script>
 
-        function game(){
+    function game(){
 
-            
-        
         let playerChoice = playerPick();
         
         function playerPick() {
-            let playerInitial = window.prompt("Type Rock, Paper, or Scissors.");
-            if (playerInitial === null || playerInitial === undefined) {
+            let playerInput = window.prompt("Type Rock, Paper, or Scissors.");
+            /*If the player presses the cancel button the code will stop
+            and return a TypeError, taking you out of the loop. The commented code was 
+            an attempt to take you out of the loop if user presses cancel, without
+            returning a TypeError, but did not work as intended, the user would still 
+            have to play the remaining rounds, only canceling the current round. */
+            /*if (playerInput === null || playerInput === undefined) {
                 return
-            } else {
-                return playerInitial.toLowerCase();
-            }
+            } else { */
+                return playerInput.toLowerCase().trim();
+            //} 
         }
-            console.log(playerChoice);
+
+        let computerChoice = getcomputerChoice();
+        
         function getcomputerChoice() {
             let randomComputerChoice = Math.floor(Math.random() * 100);
             if (randomComputerChoice <= 33) {
@@ -36,27 +41,26 @@
             }
         }
 
-        function playRound(playerChoice, computerSelection) {
-            if ((playerChoice === "rock" && computerSelection === "paper") || 
-            (playerChoice === "paper" && computerSelection === "scissors" ) || 
-            (playerChoice === "scissors" && computerSelection === "rock")) {
+        function playRound(playerChoice, computerChoice) {
+            if ((playerChoice === "rock" && computerChoice === "paper") || 
+            (playerChoice === "paper" && computerChoice === "scissors" ) || 
+            (playerChoice === "scissors" && computerChoice === "rock")) {
                return alert("You Lose!");
-            } else if (playerChoice === computerSelection) {
+            } else if (playerChoice === computerChoice) {
                return alert("It's a Tie!");
-            } else if ((playerChoice === "rock" && computerSelection === "scissors") || 
-            (playerChoice === "paper" && computerSelection === "rock") || 
-            (playerChoice === "scissors" && computerSelection === "paper")) {
+            } else if ((playerChoice === "rock" && computerChoice === "scissors") || 
+            (playerChoice === "paper" && computerChoice === "rock") || 
+            (playerChoice === "scissors" && computerChoice === "paper")) {
                 return alert("You Win!");
-            } else if (playerChoice === null || playerChoice === undefined) {
-                return
+            //} else if (playerChoice === null || playerChoice === undefined) {
+                //return
             } else {
                 return alert("Invalid Choice!");
             }
         }
-    
-        let computerSelection = getcomputerChoice();
-        console.log(playRound(playerChoice, computerSelection));
-        console.log(playerChoice, computerSelection);
+
+        console.log(playRound(playerChoice, computerChoice));
+        console.log(playerChoice, computerChoice);
     }
         function playFiveRounds(){
             console.log(game());
@@ -66,8 +70,7 @@
             console.log(game());
         }
 
-        console.log(game());
-        console.log(playFiveRounds());
+    console.log(playFiveRounds());
     </script>
 </body>
 </html>
