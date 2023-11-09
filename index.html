@@ -7,12 +7,13 @@
 </head>
 <body>
     <h1>To play again refresh the page!</h1>
-    <h2>To see the your choice vs. the computers choice, right click on the page and 
-        press "inspect", then click on the console tab at the top.</h2>
-    <h2>The Computer picks rock, paper, or scissors, based off a random number between
+    <h3>To see the your choice vs. the computers choice, right click on the page and 
+        press "inspect", then click on the console tab at the top (only for desktop users).
+        Currently I don't know a way to check on mobile, sorry! </h2>
+    <h3>The Computer picks rock, paper, or scissors, based off a random number between
         0 - 100.</h2>
 
-    <script>
+<script>
 
     function game(){
         let playerChoice = playerPick();
@@ -78,27 +79,27 @@
 
         console.log(playRound(playerChoice, computerChoice));
         console.log(roundResult());
-        console.log(playerChoice, computerChoice );
+        console.log("Player:" + playerChoice, "Computer:" + computerChoice);
         console.log("Player Win(s):" + winCount,"Computer Win(s):" + loseCount, "Tie(s):" + tieCount);
     }
 
-        let result = " ";
-        let winCount = 0;
-        let loseCount = 0;
-        let tieCount = 0;
+    let result = " ";
+    let winCount = 0;
+    let loseCount = 0;
+    let tieCount = 0;
 
     function overallResult() {
         if (winCount > loseCount) {
-            alert(`You have beaten the Computer! You've won ${winCount} out of 5 rounds!`);
+            alert(`You have beaten the Computer! You've won ${winCount} out of 5 rounds and tied ${tieCount} times!`);
         } else if (winCount < loseCount) {
-            alert(`You have lost to the Computer! You've only won ${winCount} out of 5 rounds, womp womp.`);
+            alert(`You have lost to the Computer! You've only won ${winCount} out of 5 rounds and tied ${tieCount} times, womp womp.`);
         } else if (winCount = 5) {
-            alert(`Wow are you some kind Rock, Paper, Scissors God? You've won ${winCount} out of 5 rounds!\nRecommend touching grass sometimes.`);
+            alert(`Wow are you some kind Rock, Paper, Scissors God? You've won ${winCount} out of 5 rounds!\nRecommend touching grass.`);
         } else if (loseCount = 5) {
             alert(`Wow you are terrible at Rock, Paper, and Scissors! You've somehow managed to lose all 5 rounds! Incredible! #SkillIssue`);
         }
         else {
-            alert(`Congratulations you're a bot, you've tied with the Computer ${tieCount} times!`);
+            alert(`Congratulations you're a bot, you've tied with the Computer ${tieCount} times, with ${winCount} win(s) and ${loseCount} loss(es).`);
         }
     }
 
@@ -112,6 +113,6 @@
 
     console.log(playFiveRounds());
     console.log(overallResult());
-    </script>
+</script>
 </body>
 </html>
