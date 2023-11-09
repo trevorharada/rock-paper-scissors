@@ -65,38 +65,53 @@
                 return console.log(playRound(playerPick(), computerChoice));
             }
         }
-
-        //let result = " ";
         
+        function roundResult() {
+            if (result === "Win"){
+               return winCount++;
+            } else if (result === "Lose") {
+               return loseCount++;
+            } else {
+               return tieCount++;
+            }
+        }
+
         console.log(playRound(playerChoice, computerChoice));
+        console.log(roundResult());
         console.log(playerChoice, computerChoice );
+        console.log("Player Win(s):" + winCount,"Computer Win(s):" + loseCount, "Tie(s):" + tieCount);
     }
 
-    //let result = " ";
-
-    function playFiveRounds(){
+        let result = " ";
         let winCount = 0;
         let loseCount = 0;
         let tieCount = 0;
 
-        /*if (game() === "Win"){
-            return winCount++;
-        } else if (game() === "Lose") {
-            return loseCount++;
-        } else {
-            return tieCount++;
-        }*/
+    function overallResult() {
+        if (winCount > loseCount) {
+            alert(`You have beaten the Computer! You've won ${winCount} out of 5 rounds!`);
+        } else if (winCount < loseCount) {
+            alert(`You have lost to the Computer! You've only won ${winCount} out of 5 rounds, womp womp.`);
+        } else if (winCount = 5) {
+            alert(`Wow are you some kind Rock, Paper, Scissors God? You've won ${winCount} out of 5 rounds!\nRecommend touching grass sometimes.`);
+        } else if (loseCount = 5) {
+            alert(`Wow you are terrible at Rock, Paper, and Scissors! You've somehow managed to lose all 5 rounds! Incredible! #SkillIssue`);
+        }
+        else {
+            alert(`Congratulations you're a bot, you've tied with the Computer ${tieCount} times!`);
+        }
+    }
 
+    function playFiveRounds(){
         console.log(game());
         console.log(game());
         console.log(game());
         console.log(game());
         console.log(game());
-        console.log(winCount, loseCount, tieCount);
     }
 
     console.log(playFiveRounds());
-    //console.log(result);
+    console.log(overallResult());
     </script>
 </body>
 </html>
