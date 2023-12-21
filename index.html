@@ -13,21 +13,24 @@
 
 <script>
     const scoreboard = document.querySelector('#scoreboard');
-    const playerScore = document.createElement('div');
-    const tieScore = document.createElement('div');
-    const computerScore = document.createElement('div');
-    let playerCount = 0;
-    let tieCount = 0;
-    let computerCount = 0;
+    const playerScoreDisplay = document.createElement('div');
+    const tieScoreDisplay = document.createElement('div');
+    const computerScoreDisplay = document.createElement('div');
+    let computerScore = document.createElement('span');
+    let playerScore = document.createElement('span');
+    let tieScore = document.createElement('span');
 
     scoreboard.style.display = 'flex';
-    playerScore.textContent = `Player: ${playerCount}`;
-    tieScore.textContent = `Ties: ${tieCount}`;
-    computerScore.textContent = `Computer: ${computerCount}`;
+    playerScoreDisplay.textContent = `Player: `;
+    tieScoreDisplay.textContent = `Ties: `;
+    computerScoreDisplay.textContent = `Computer: `;
 
-    scoreboard.appendChild(playerScore);
-    scoreboard.appendChild(tieScore);
-    scoreboard.appendChild(computerScore);
+    scoreboard.appendChild(playerScoreDisplay);
+    scoreboard.appendChild(tieScoreDisplay);
+    scoreboard.appendChild(computerScoreDisplay);
+    playerScoreDisplay.appendChild(playerScore);
+    computerScoreDisplay.appendChild(computerScore);
+    tieScoreDisplay.appendChild(tieScore);
 
 
 
@@ -76,6 +79,12 @@
     
     let playerChoice = '';
     let computerChoice = '';
+    let playerCount = 0;
+    let tieCount = 0;
+    let computerCount = 0;
+    playerScore.textContent = `${playerCount}`;
+    computerScore.textContent = `${computerCount}`;
+    tieScore.textContent = `${tieCount}`;
 
     function rockPick() {
         rockBtn.style.background = 'gray';
@@ -120,15 +129,18 @@
         (playerChoice === "paper" && computerChoice === "scissors" ) || 
         (playerChoice === "scissors" && computerChoice === "rock")) {
             alert("You Lose!");
-            return result = "Lose";
+            computerCount++;
+            return computerScore.textContent = `${computerCount}`;
         } else if (playerChoice === computerChoice) {
             alert("It's a Tie!");
-            return result = "Tie";
+            tieCount++;
+            return tieScore.textContent = `${tieCount}`;
         } else if ((playerChoice === "rock" && computerChoice === "scissors") || 
         (playerChoice === "paper" && computerChoice === "rock") || 
         (playerChoice === "scissors" && computerChoice === "paper")) {
             alert("You Win!");
-            return result = "Win";
+            playerCount++;
+            return playerScore.textContent = `${playerCount}`;
         //} else if (playerChoice === null || playerChoice === undefined) {
             //return
         } else {
