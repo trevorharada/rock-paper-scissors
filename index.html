@@ -21,9 +21,14 @@
     let tieScore = document.createElement('span');
 
     scoreboard.style.display = 'flex';
+    scoreboard.style.fontSize = 'xx-large';
     playerScoreDisplay.textContent = `Player: `;
+    playerScoreDisplay.style.marginRight = '10px';
+    playerScoreDisplay.style.marginLeft = 'auto';
     tieScoreDisplay.textContent = `Ties: `;
+    tieScoreDisplay.style.marginRight = '10px';
     computerScoreDisplay.textContent = `Computer: `;
+    computerScoreDisplay.style.marginRight = 'auto';
 
     scoreboard.appendChild(playerScoreDisplay);
     scoreboard.appendChild(tieScoreDisplay);
@@ -40,6 +45,9 @@
     let playerHover = document.createElement('span');
     let computerHover = document.createElement('span');
 
+    choiceDisplay.style.fontSize = 'xx-large';
+    choiceDisplay.style.margin = '10px';
+    choiceDisplay.style.textAlign ='center';
     playerDisplay.textContent = `Player: `;
     computerDisplay.textContent = `Computer: `;
 
@@ -55,6 +63,13 @@
     const paperBtn = document.createElement('button');
     const scissorBtn = document.createElement('button');
 
+    playerBtns.style.textAlign = 'center';
+    rockBtn.style.fontSize = 'x-large';
+    rockBtn.style.margin = '5px';
+    paperBtn.style.fontSize = 'x-large';
+    paperBtn.style.margin = '5px';
+    scissorBtn.style.fontSize = 'x-large';
+    scissorBtn.style.margin = '5px';
     rockBtn.textContent = 'Rock';
     paperBtn.textContent = 'Paper';
     scissorBtn.textContent = 'Scissors'; 
@@ -69,6 +84,13 @@
     const playBtn = document.createElement('button');
     const restartBtn = document.createElement('button');
 
+    playRoundDiv.style.textAlign = 'center';
+    playBtn.style.fontSize = 'x-large';
+    playBtn.style.margin = '5px';
+    playBtn.style.border = '3px solid green';
+    restartBtn.style.fontSize = 'x-large';
+    restartBtn.style.margin = '5px';
+    restartBtn.style.border = '3px solid red';
     playBtn.textContent = 'Play';
     restartBtn.textContent = 'Restart';
 
