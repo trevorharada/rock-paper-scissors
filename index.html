@@ -104,18 +104,7 @@
         console.log(playerChoice);
     };
 
-    rockBtn.addEventListener('click',rockPick);
-
-    paperBtn.addEventListener('click', paperPick);
-
-    scissorBtn.addEventListener('click', scissorPick); 
-
-    console.log(playerChoice);
-
-    function play() {
-        playBtn.style.background = 'yellow';
-        
-        function getcomputerChoice() {
+    function getcomputerChoice() {
             let randomComputerChoice = Math.floor(Math.random() * 100);
             if (randomComputerChoice <= 33) {
                 return getComputerChoice = "rock";
@@ -125,32 +114,40 @@
                 return getComputerChoice = "scissors";
             }
         }
+    
+    function playRound(playerChoice, computerChoice) {
+        if ((playerChoice === "rock" && computerChoice === "paper") || 
+        (playerChoice === "paper" && computerChoice === "scissors" ) || 
+        (playerChoice === "scissors" && computerChoice === "rock")) {
+            alert("You Lose!");
+            return result = "Lose";
+        } else if (playerChoice === computerChoice) {
+            alert("It's a Tie!");
+            return result = "Tie";
+        } else if ((playerChoice === "rock" && computerChoice === "scissors") || 
+        (playerChoice === "paper" && computerChoice === "rock") || 
+        (playerChoice === "scissors" && computerChoice === "paper")) {
+            alert("You Win!");
+            return result = "Win";
+        //} else if (playerChoice === null || playerChoice === undefined) {
+            //return
+        } else {
+            alert("Invalid Choice!");
+            return
+        }
+    }
 
+    rockBtn.addEventListener('click',rockPick);
+
+    paperBtn.addEventListener('click', paperPick);
+
+    scissorBtn.addEventListener('click', scissorPick); 
+
+    function play() {
         computerChoice = getcomputerChoice();
         computerHover.textContent = `${computerChoice}`;
 
-        function playRound(playerChoice, computerChoice) {
-            if ((playerChoice === "rock" && computerChoice === "paper") || 
-            (playerChoice === "paper" && computerChoice === "scissors" ) || 
-            (playerChoice === "scissors" && computerChoice === "rock")) {
-                alert("You Lose!");
-                return result = "Lose";
-            } else if (playerChoice === computerChoice) {
-                alert("It's a Tie!");
-                return result = "Tie";
-            } else if ((playerChoice === "rock" && computerChoice === "scissors") || 
-            (playerChoice === "paper" && computerChoice === "rock") || 
-            (playerChoice === "scissors" && computerChoice === "paper")) {
-                alert("You Win!");
-                return result = "Win";
-            //} else if (playerChoice === null || playerChoice === undefined) {
-                //return
-            } else {
-                alert("Invalid Choice!");
-                return
-            }
-        }
-        console.log(playRound());
+        playRound(playerChoice,computerChoice);
         console.log(playerChoice, computerChoice);
         }
 
