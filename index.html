@@ -175,7 +175,7 @@
     function play() {
         if (roundCount >= 6) {
             computerChoice = getcomputerChoice();
-            playBtn.textContent = `Round ${roundCount}/5`;
+            playBtn.textContent = `Play Round ${roundCount}/5`;
             computerHover.textContent = `${computerChoice}`;
 
             playRound(playerChoice,computerChoice);
@@ -191,7 +191,7 @@
             restart();
         } else {
             computerChoice = getcomputerChoice();
-            playBtn.textContent = `Round ${roundCount}/5`;
+            playBtn.textContent = `Play Round ${roundCount}/5`;
             computerHover.textContent = `${computerChoice}`;
 
             playRound(playerChoice,computerChoice);
