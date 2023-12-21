@@ -82,6 +82,8 @@
     let playerCount = 0;
     let tieCount = 0;
     let computerCount = 0;
+    let roundCount = 2; 
+
     playerScore.textContent = `${playerCount}`;
     computerScore.textContent = `${computerCount}`;
     tieScore.textContent = `${tieCount}`;
@@ -92,7 +94,6 @@
         scissorBtn.style.background = '';
         playerHover.textContent ='rock';
         playerChoice = 'rock';
-        console.log(playerChoice);
     };
 
     function paperPick() {
@@ -101,7 +102,6 @@
         scissorBtn.style.background = '';
         playerHover.textContent = 'paper';
         playerChoice = 'paper';
-        console.log(playerChoice);
     };
 
     function scissorPick() {
@@ -110,7 +110,6 @@
         scissorBtn.style.background = 'gray';
         playerHover.textContent = 'scissors';
         playerChoice = 'scissors';
-        console.log(playerChoice);
     };
 
     function getcomputerChoice() {
@@ -130,23 +129,69 @@
         (playerChoice === "scissors" && computerChoice === "rock")) {
             alert("You Lose!");
             computerCount++;
+            roundCount++
             return computerScore.textContent = `${computerCount}`;
         } else if (playerChoice === computerChoice) {
             alert("It's a Tie!");
             tieCount++;
+            roundCount++
             return tieScore.textContent = `${tieCount}`;
         } else if ((playerChoice === "rock" && computerChoice === "scissors") || 
         (playerChoice === "paper" && computerChoice === "rock") || 
         (playerChoice === "scissors" && computerChoice === "paper")) {
             alert("You Win!");
             playerCount++;
+            roundCount++
             return playerScore.textContent = `${playerCount}`;
         //} else if (playerChoice === null || playerChoice === undefined) {
             //return
         } else {
             alert("Invalid Choice!");
-            return
         }
+    }
+
+    function play() {
+        if (roundCount >= 6) {
+            computerChoice = getcomputerChoice();
+            playBtn.textContent = `Round ${roundCount}/5`;
+            computerHover.textContent = `${computerChoice}`;
+
+            playRound(playerChoice,computerChoice);
+
+            if (playerCount > computerCount) {
+                alert('You beat the computer!');
+            } else if (playerCount === computerCount) {
+                alert('You tied the computer!');
+            } else {
+                alert('You lost to the computer!');
+            }
+
+            restart();
+        } else {
+            computerChoice = getcomputerChoice();
+            playBtn.textContent = `Round ${roundCount}/5`;
+            computerHover.textContent = `${computerChoice}`;
+
+            playRound(playerChoice,computerChoice);
+        }
+    }
+
+    function restart() {
+        playerChoice = '';
+        playerCount = 0;
+        computerCount = 0;
+        tieCount = 0;
+        roundCount = 2;
+
+        playBtn.textContent = 'Play';
+        playerScore.textContent = `${playerCount}`;
+        computerScore.textContent = `${computerCount}`;
+        tieScore.textContent = `${tieCount}`;
+        playerHover.textContent = '';
+        computerHover.textContent = '';
+        rockBtn.style.background = '';
+        paperBtn.style.background = '';
+        scissorBtn.style.background = '';
     }
 
     rockBtn.addEventListener('click',rockPick);
@@ -155,15 +200,9 @@
 
     scissorBtn.addEventListener('click', scissorPick); 
 
-    function play() {
-        computerChoice = getcomputerChoice();
-        computerHover.textContent = `${computerChoice}`;
+    playBtn.addEventListener('click', play);
 
-        playRound(playerChoice,computerChoice);
-        console.log(playerChoice, computerChoice);
-        }
-
-        playBtn.addEventListener('click', play);
+    restartBtn.addEventListener('click', restart);
 
 
 
